@@ -115,3 +115,7 @@
 #generales-button-2 {
     background-color: var(--celeste);
 }
+
+#svg-urna-grande {
+    height: 50px;
+}
