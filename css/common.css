@@ -34,6 +34,7 @@
     --mensaje-usuario-rojo: #dc3545;
 }
 
+/*------GENERALES VARIOS------*/
 body {
     margin: 0;
     font-family: Roboto;
@@ -60,6 +61,7 @@ h3 {
     color: var(--titulos);
 }
 
+/*------CABECERA------*/
 #container-header-page {
     background-color: var(--fondo-Cabecera);
 }
@@ -75,19 +77,21 @@ h3 {
     display: flex;
 }
 
+#header-logo {
+    width: 150px;
+}
+
+/*------BARRA DE MENU------*/
 #container-menu-page {
     background-color: var(--fondo-Menu);
 }
 
 #menu-page {
-    margin: 0 13px;
-    padding: 5px 0;
+    display: flex;
+    padding: 5px;
 }
 
-#header-logo {
-    width: 150px;
-}
-
+/*------FOOTER------*/
 footer {
     background-color: var(--fondo-Footer);
     bottom: 0;
