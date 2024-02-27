@@ -1,0 +1,156 @@
+/*------BARRA DE MENU------*/
+
+#menu-page {
+    gap: 10px;
+}
+
+/*-BOTONES-*/
+
+.menu-button {
+    color: #FFF;
+    font-size: 10px;
+    font-weight: bold;
+    border-style: solid;
+    border-radius: 5px;
+    padding: 5px;
+    text-align: center;
+    width: 80px;
+    height: 30px;
+}
+
+#inicio-button {
+    background-color: var(--gris-claro);
+    border-color: var(--gris-claro);
+    position: absolute;
+    right: 10px;
+}
+
+#inicio-button:hover {
+    color: var(--textos);
+}
+
+#generales-button {
+    background-color: var(--celeste);
+    border-color: var(--celeste);
+}
+
+#informes-button, #filtrar-button {
+    border-radius: 15px;
+    border-width: 1px;
+    padding: 6.5px;
+    border-color: #FFF;
+}
+
+#informes-button {
+    background-color: var(--fondo-Menu);
+}
+
+#filtrar-button {
+    background-color: white;
+    color: var(--textos);
+}
+
+#filtrar-button:hover {
+    background-color: var(--gris-claro);
+    border-color: var(--gris-claro);
+    color: white;
+}
+
+#generales-button:hover, #informes-button:hover {
+    background-color: var(--gris-claro);
+    border-color: var(--gris-claro);
+}
+
+/*-DESPLEGABLES-*/
+
+.desplegable {
+    background-color: transparent;
+    border-style: none;
+    font-size: 14px;
+    height: 30px;
+    padding: 5px;
+    color: var(--celeste);
+    font-weight: bold;
+}
+
+.desplegable:hover {
+    background-color: transparent;
+    color: #FFF;
+}
+
+/*------SECCION DE MENSAJES AL USUARIO------*/
+
+#div-container-msg {
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+    margin: auto;
+}
+
+.cuadro-msg {
+    display: flex;
+    justify-content: center;
+    width: 400px;
+    margin: 20px auto;
+    padding: 15px;
+    border-radius: 10px;
+    font-weight: 200;
+    font-size: 12px;
+}
+
+.cuadro-msg i, .cuadro-msg p {
+    color: #FFF;
+}
+
+.cuadro-msg i {
+    font-size: 16px;
+}
+
+#msg-exito {
+    background-color: var(--mensaje-usuario-verde);
+}
+
+#msg-error {
+    background-color: var(--mensaje-usuario-rojo);
+}
+
+#msg-alerta {
+    background-color: var(--mensaje-usuario-amarillo);
+}
+
+/*------SECCION DE CONTENIDO PRINCIPAL------*/
+
+/*-TITULO-*/
+
+#div-titulo, #div-contenido-botones {
+    width: 85%;
+    margin: auto;
+}
+
+#div-titulo h1 {
+    margin: 0;
+}
+
+#div-titulo p {
+    margin: 0 0 20px 0;
+    color: var(--celeste);
+    font-size: 14px;
+}
+
+/*-BOTONES-*/
+
+#div-contenido-botones {
+    display: flex;
+}
+
+#button-agregar-a-informe {
+    background-color: var(--gris-claro);
+    color: #FFF;
+    font-size: 10px;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+#button-agregar-a-informe:hover {
+    color: var(--textos);
+}

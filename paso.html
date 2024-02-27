@@ -27,42 +27,59 @@
         <!--Barra de menú principal-->
         <div id="container-menu-page">
             <div id="menu-page">
-                <select name="" id="">
+                <select class="desplegable" name="" id="">
                     <option value="">Año</option>
                 </select>
-                <select name="" id="">
+                <select class="desplegable" name="" id="">
                     <option value="">Cargo</option>
                 </select>
-                <select name="" id="">
+                <select class="desplegable" name="" id="">
                     <option value="">Distrito</option>
                 </select>
-                <ul>
-                    <li><a class="active" href="#">(icono-lupa)FILTRAR</a></li>
-                    <li><a class="active" href="informes.html">INFORMES</a></li>
-                    <li><a class="active" href="index.html">INICIO</a></li>
-                </ul>
+                <a href="#"><button class="menu-button" id="filtrar-button"><i class="fa-solid fa-magnifying-glass"></i>
+                        FILTRAR</button></a>
+                <a href="generales.html"><button class="menu-button" id="generales-button">GENERALES</button></a>
+                <a href="informes.html"><button class="menu-button" id="informes-button">INFORMES</button></a>
+                <a href="index.html"><button class="menu-button" id="inicio-button">INICIO</button></a>
             </div>
         </div>
     </header>
     <!-- Contenido principal de la página -->
     <main>
         <section id="sec-titulo">
-            <!--Seccion para agregar una palicula favorita por codigo-->
-            <h2>Sección Paso</h2>
-            <p>Párrafo o subtítulo</p>
-            <div><img src="" alt="">Img</div>
+            <!--Seccion para agregar un título-->
         </section>
-        <br>
-        <section id="sec-messages">Mensajes para el usuario</section>
+        <section id="sec-messages">
+            <div id="div-container-msg">
+                <div class="cuadro-msg" id="msg-exito">
+                    <p><i class="fa-solid fa-thumbs-up"></i> Se agregó con éxito el resultado al informe</p>
+                </div>
+                <div class="cuadro-msg" id="msg-error">
+                    <p><i class="fa-solid fa-triangle-exclamation"></i> Error. Se prdujo un error al intentar agregar
+                        resultados al informe</p>
+                </div>
+                <div class="cuadro-msg" id="msg-alerta">
+                    <p><i class="fa-solid fa-exclamation"></i> La operación no se pudo completar</p>
+                </div>
+            </div>
+        </section>
         <br>
         <section id="sec-contenido">
             <!--Seccion para contenido de la página-->
-            <button>+ AGREGAR A INFORME</button>
-            <button><svg></svg>Mesas escrutadas</button>
-            <button><svg></svg>Electores</button>
-            <button><svg></svg>Participación sobre escrutado</button>
-            <br>
-            <br>
+            <div id="div-titulo">
+                <h1>Elecciones 2021 | Paso</h1>
+                <p class="texto-path">2020 > Generales > Provisorio > Senadores Nacionales > Buenos Aires</p>
+            </div>
+            <div id="div-contenido-botones">
+                <div id="div-agregar-a-informe">
+                    <button id="button-agregar-a-informe">+ AGREGAR A INFORME</button>
+                </div>
+                <div id="div-tres-botones">
+                    <button><svg></svg>Mesas escrutadas</button>
+                    <button><svg></svg>Electores</button>
+                    <button><svg></svg>Participación sobre escrutado</button>
+                </div>
+            </div>
             <div id="sec-cuadros">
                 <div>Datos por agrupacion politica</div>
                 <div>Cuadro de mapa</div>
