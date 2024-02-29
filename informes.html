@@ -27,46 +27,70 @@
         <!--Barra de menú principal-->
         <div id="container-menu-page">
             <div id="menu-page">
-                <ul>
-                    <li><a class="active" href="paso.html">PASO</a></li>
-                    <li><a class="active" href="generales.html">GENERALES</a></li>
-                    <li><a class="active" href="index.html">INICIO</a></li>
-                </ul>
+                <div id="menu-etiqueta">CONSULTAR:</div>
+                <a href="paso.html"><button class="menu-button" id="paso-button">PASO</button></a>
+                <a href="generales.html"><button class="menu-button" id="generales-button">GENERALES</button></a>
+                <a href="index.html"><button class="menu-button" id="inicio-button">INICIO</button></a>
             </div>
         </div>
-        
+
     </header>
     <!-- Contenido principal de la página -->
     <main>
-        <section id="sec-titulo">
-            <!--Seccion para agregar una palicula favorita por codigo-->
-            <h2>Sección de Informes</h2>
-            <p>Párrafo o subtítulo</p>
-            <div>Imagen <img src="" alt=""></div>
+        <section id="sec-messages">
+            <div id="div-container-msg">
+                <div class="cuadro-msg" id="msg-exito">
+                    <p><i class="fa-solid fa-thumbs-up"></i> Se agregó con éxito el resultado al informe</p>
+                </div>
+                <div class="cuadro-msg" id="msg-error">
+                    <p><i class="fa-solid fa-triangle-exclamation"></i> Error. Se prdujo un error al intentar agregar
+                        resultados al informe</p>
+                </div>
+                <div class="cuadro-msg" id="msg-alerta">
+                    <p><i class="fa-solid fa-exclamation"></i> La operación no se pudo completar</p>
+                </div>
+            </div>
         </section>
         <br>
-        <section id="sec-messages">Mensajes para el usuario</section>
-        <br>
+        <section id="sec-titulo">
+            <!--Seccion para agregar un título-->
+            <div class="div-container" id="div-container-titulo">
+                <h1>Reporte de Elecciones</h1>
+            </div>
+        </section>
         <section id="sec-contenido">
             <!--Seccion para contenido de la página-->
-            <div id="grilla">
-                <div id="cabecera">
-                    <div>PROVINCIA</div>
-                    <div>ELECCION</div>
-                    <div>DATOS GENERALES</div>
-                    <div>DATOS POR AGRUPACION</div>
+            <div class="div-container" id="div-container-grilla">
+                <div class="div-cabecera-grilla">PROVINCIA</div>
+                <div class="div-cabecera-grilla">ELECCION</div>
+                <div class="div-cabecera-grilla">DATOS GENERALES</div>
+                <div class="div-cabecera-grilla">DATOS POR AGRUPACION</div>
+                <div class="div-cuerpo-grilla grilla-provincia">
+                    <svg></svg>
                 </div>
-                <div class="fila">
-                    <div>PROVINCIA</div>
-                    <div>ELECCION</div>
-                    <div>DATOS GENERALES</div>
-                    <div>DATOS POR AGRUPACION</div>
+                <div class="div-cuerpo-grilla grilla-eleccion">
+                    <p class="texto-elecciones-chico">Elecciones 2020 | Generales</p>
+                    <p class="texto-path-chico">2020 > Generales > Provisorio > Senadores Nacionales > Buenos Aires</p>
                 </div>
-                <div class="fila">
-                    <div>PROVINCIA</div>
-                    <div>ELECCION</div>
-                    <div>DATOS GENERALES</div>
-                    <div>DATOS POR AGRUPACION</div>
+                <div class="div-cuerpo-grilla grilla-datos-generales">
+                    <div class="recuadro-datos mesas-escrutadas">
+                        <img src="img/svg/urna.svg" alt="urna">
+                        Mesas escrutadas
+                    </div>
+                    <div class="recuadro-datos electores">
+                        <img src="img/svg/personas.svg" alt="personas">
+                        Electores
+                    </div>
+                    <div class="recuadro-datos participacion">
+                        <img src="img/svg/manos.svg" alt="manos">
+                        Participación sobre escrutado
+                    </div>
+                </div>
+                <div class="div-cuerpo-grilla grilla-datos-por-agrupacion">
+                    <div class="texto-agrupacion-oscuro">Juntos</div>
+                    <div class="texto-agrupacion-claro">38%<br>30000 votos</div>
+                    <div class="texto-agrupacion-oscuro">PJ</div>
+                    <div class="texto-agrupacion-claro">20%<br>12000 votos</div>
                 </div>
             </div>
         </section>

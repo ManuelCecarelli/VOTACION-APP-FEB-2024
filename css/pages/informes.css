@@ -1,0 +1,194 @@
+/*------BARRA DE MENU------*/
+
+#menu-page {
+    gap: 10px;
+}
+
+#menu-etiqueta, .menu-button {
+    color: #FFF;
+    font-size: 10px;
+    font-weight: bold;
+    height: 30px;
+}
+
+#menu-etiqueta {
+    display: flex;
+    align-items: center;
+}
+
+.menu-button {
+    border-style: solid;
+    border-radius: 5px;
+    padding: 5px;
+    text-align: center;
+    width: 80px;
+}
+
+#paso-button {
+    background-color: var(--magenta);
+    border-color: var(--magenta);
+}
+
+#generales-button {
+    background-color: var(--celeste);
+    border-color: var(--celeste);
+}
+
+#inicio-button {
+    background-color: var(--gris-claro);
+    border-color: var(--gris-claro);
+    position: absolute;
+    right: 10px;
+}
+
+#paso-button:hover, #generales-button:hover {
+    background-color: var(--gris-claro);
+    border-color: var(--gris-claro);
+}
+
+#inicio-button:hover {
+    color: var(--textos);
+}
+
+/*------SECCION DE MENSAJES AL USUARIO------*/
+
+#div-container-msg {
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+    margin: auto;
+}
+
+.cuadro-msg {
+    display: flex;
+    justify-content: center;
+    width: 400px;
+    margin: 20px auto;
+    padding: 15px;
+    border-radius: 10px;
+    font-weight: 200;
+    font-size: 12px;
+}
+
+.cuadro-msg i,
+.cuadro-msg p {
+    color: #FFF;
+}
+
+.cuadro-msg i {
+    font-size: 16px;
+}
+
+#msg-exito {
+    background-color: var(--mensaje-usuario-verde);
+}
+
+#msg-error {
+    background-color: var(--mensaje-usuario-rojo);
+}
+
+#msg-alerta {
+    background-color: var(--mensaje-usuario-amarillo);
+}
+
+/*------SECCION DE CONTENIDO------*/
+
+.div-container {
+    width: 1024px;
+    margin: auto;
+}
+
+#div-container-grilla {
+    display: grid;
+    grid-template-columns: 307px 102px 409px 206px;
+    margin: 0 auto 50 auto;
+    border-radius: 15px;
+    border: 1px solid var(--borde-Grilla);
+    border-collapse: collapse;
+    background-color: rgb(250, 250, 250);
+}
+
+.div-cabecera-grilla {
+    text-align: center;
+    color: var(--titulo-Grilla);
+    padding: 10px 20px;
+    font-size: 14px;
+    font-weight: bold;
+    text-transform: uppercase;
+    border-bottom: 1px solid var(--borde-inferior-Grilla);
+}
+
+.div-cuerpo-grilla {
+    display: flex;
+    background-color: rgb(255, 255, 255);
+    border-radius: 15px;
+    padding: 15px 0px;
+    font-size: 12px;
+}
+
+.grilla-provincia {
+    align-items: center;
+    justify-content: center;
+}
+
+.grilla-eleccion {
+    flex-direction: column;
+    justify-content: center;
+}
+
+.texto-elecciones-chico {
+    font-size: 12px;
+    color: var(--textos);
+    font-weight: bold;
+}
+
+.texto-path-chico {
+    font-size: 11px;
+    color: var(--celeste);
+}
+
+.grilla-datos-generales {
+    justify-content: center;
+}
+
+.recuadro-datos {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    margin: 2px;
+    height: 70px;
+    width: 120px;
+    font-size: 10px;
+    color: #FFF;
+}
+
+.recuadro-datos img {
+    height: 35px;
+}
+
+.mesas-escrutadas {
+    background-color: var(--celeste);
+}
+
+.electores {
+    background-color: var(--magenta);
+}
+
+.participacion {
+    background-color: var(--morado);
+}
+
+.grilla-datos-por-agrupacion {
+    display: grid;
+    grid-template-columns: 100px 100px;
+    /*overflow-x: scroll;*/
+    /*height: 325px;*/
+    padding: 15px;
+    /*font-size: 10px;*/
+    color: var(--textos);
+}
+
+.texto-agrupacion-oscuro {
+    font-weight: bold;
+}
