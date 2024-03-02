@@ -66,18 +66,19 @@
 /*-DESPLEGABLES-*/
 
 .desplegable {
-    background-color: transparent;
+    background-color: var(--fondo-Menu);
     border-style: none;
     font-size: 14px;
     height: 30px;
+    width: 120px;
     padding: 5px;
     color: var(--celeste);
     font-weight: bold;
 }
 
 .desplegable:hover {
-    background-color: transparent;
-    color: #FFF;
+    background-color: var(--fondo-Menu);
+    color: white;
 }
 
 /*------SECCION DE MENSAJES AL USUARIO------*/

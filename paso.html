@@ -29,15 +29,17 @@
         <!--Barra de menú principal-->
         <div id="container-menu-page">
             <div id="menu-page">
-                <select class="desplegable" name="" id="">
-                    <option value="">Año</option>
+                <!--Combos seleccionables-->
+                <select class="desplegable" name="select-anio" id="select-anio" onchange="detectarAnio()">
+                    <option value="" disabled selected>Año</option>
                 </select>
-                <select class="desplegable" name="" id="">
-                    <option value="">Cargo</option>
+                <select class="desplegable" name="select-cargo" id="select-cargo" onchange="detectarCargo()">
+                    <option value="" disabled selected>Cargo</option>
                 </select>
-                <select class="desplegable" name="" id="">
+                <select class="desplegable" name="select-distrito" id="select-distrito">
                     <option value="">Distrito</option>
                 </select>
+                <!--Botones-->
                 <a href="#"><button class="menu-button" id="filtrar-button"><i class="fa-solid fa-magnifying-glass"></i>
                         FILTRAR</button></a>
                 <a href="generales.html"><button class="menu-button" id="generales-button">GENERALES</button></a>
