@@ -31,16 +31,21 @@
             <div id="menu-page">
                 <!--Combos seleccionables-->
                 <select class="desplegable" name="select-anio" id="select-anio" onchange="detectarAnio()">
-                    <option value="" disabled selected>Año</option>
+                    <option value="#" disabled selected>Año</option>
                 </select>
                 <select class="desplegable" name="select-cargo" id="select-cargo" onchange="detectarCargo()">
-                    <option value="" disabled selected>Cargo</option>
+                    <option value="#" disabled selected>Cargo</option>
                 </select>
-                <select class="desplegable" name="select-distrito" id="select-distrito">
-                    <option value="" disabled selected>Distrito</option>
+                <select class="desplegable" name="select-distrito" id="select-distrito" onchange="detectarDistrito()">
+                    <option value="#" disabled selected>Distrito</option>
+                </select>
+                <input type="hidden" id="hdSeccionProvincial" name="hdSeccionProvincial" value="">
+                <select class="desplegable" name="select-seccion" id="select-seccion">
+                    <option value="#" disabled selected>Sección</option>
                 </select>
                 <!--Botones-->
-                <a href="#"><button class="menu-button" id="filtrar-button"><i class="fa-solid fa-magnifying-glass"></i>
+                <a href="#"><button class="menu-button" id="filtrar-button" onclick="filtrarDatos()"><i
+                            class="fa-solid fa-magnifying-glass"></i>
                         FILTRAR</button></a>
                 <a href="generales.html"><button class="menu-button" id="generales-button">GENERALES</button></a>
                 <a href="informes.html"><button class="menu-button" id="informes-button">INFORMES</button></a>
@@ -52,43 +57,23 @@
     <main>
         <section id="sec-titulo">
             <!--Seccion para agregar un título-->
+            <div id="div-titulo"></div>
         </section>
         <section id="sec-messages">
+            <!--Sección para mostrale mensajes al usuario-->
             <div id="div-container-msg">
-                <div class="cuadro-msg" id="msg-exito">
-                    <p><i class="fa-solid fa-thumbs-up"></i> Se agregó con éxito el resultado al informe</p>
-                </div>
-                <div class="cuadro-msg" id="msg-error">
-                    <p><i class="fa-solid fa-triangle-exclamation"></i> Error. Se prdujo un error al intentar agregar
-                        resultados al informe</p>
-                </div>
                 <div class="cuadro-msg" id="msg-alerta">
-                    <p><i class="fa-solid fa-exclamation"></i> La operación no se pudo completar</p>
+                    <p><i class="fa-solid fa-exclamation"></i> Debe seleccionar los valores a filtrar y hacer clic en el botón "FILTRAR"</p>
                 </div>
             </div>
         </section>
-        <br>
         <section id="sec-contenido">
             <!--Seccion para contenido de la página-->
-            <div id="div-titulo">
-                <h1>Elecciones 2021 | Paso</h1>
-                <p class="texto-path">2020 > Generales > Provisorio > Senadores Nacionales > Buenos Aires</p>
-            </div>
             <div id="div-contenido">
-                <div id="div-agregar-a-informe">
-                    <button id="button-agregar-a-informe">+ AGREGAR A INFORME</button>
-                </div>
-                <div id="div-recuadros-resumen">
-                    <div class="recuadro-resumen" id="recuadro-urna"><img src="img/svg/urna.svg" alt=""> Mesas
-                        escrutadas</div>
-                    <div class="recuadro-resumen" id="recuadro-personas"><img src="img/svg/personas.svg" alt="">
-                        Electores</div>
-                    <div class="recuadro-resumen" id="recuadro-manos"><img src="img/svg/manos.svg" alt=""> Participación
-                        sobre escrutado</div>
-                </div>
+                
             </div>
             <div id="div-container-graficos">
-                <div class="div-grafico" id="grafico-datos">
+                <!--<div class="div-grafico" id="grafico-datos">
                     <div class="titulo-de-grafico">Agrupaciones políticas</div>
                     <div id="cuerpo-de-grafico">
                         <div class="cuerpo-de-grafico-titulo">Juntos por el cambio</div>
@@ -128,7 +113,7 @@
                     20%"></div>
                         </div>
                     </div>
-                </div>
+                </div>-->
             </div>
         </section>
     </main>

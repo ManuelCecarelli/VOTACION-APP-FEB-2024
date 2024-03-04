@@ -94,6 +94,7 @@ h3 {
 /*------FOOTER------*/
 footer {
     background-color: var(--fondo-Footer);
+    position: absolute;
     bottom: 0;
 }
 
@@ -126,5 +127,5 @@ footer {
 }
 
 #footer-text p a {
-    color: #ffc107;
+    color: var(--celeste);
 }
