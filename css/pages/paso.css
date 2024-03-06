@@ -241,6 +241,12 @@
     padding: 5px;
 }
 
+#mapa-de-grafico{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .cuerpo-de-grafico-titulo {
     font-size: 12px;
     padding: 5px;

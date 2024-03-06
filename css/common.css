@@ -38,6 +38,7 @@
 body {
     margin: 0;
     font-family: Roboto;
+    overflow-y: scroll;
 }
 
 p {
@@ -95,7 +96,7 @@ h3 {
 footer {
     background-color: var(--fondo-Footer);
     position: absolute;
-    bottom: 0;
+    bottom: none;
 }
 
 #footer-container {

@@ -1,12 +1,16 @@
+import { provincias, colores } from "./mapas.js";
+
 const tipoEleccion = 1; //PASO
-const tipoRecuento = 1; //Las respuestas de la API no contenían recuento definitivo.
+const tipoRecuento = 1; //Recuento definitivo.
 let banderaAnio = false;
 let banderaCargo = false;
 let banderaDistrito = false;
 let consultaPeriodos;
 let consultaCargos;
 let consultaResultados;
-var variableAuxiliar;
+
+let botonFiltrar = document.getElementById("filtrar-button");
+botonFiltrar.onclick = filtrarDatos;
 
 //Apenas se carga la página se piden los períodos a la API:
 consultaPeriodos = fetch("https://resultados.mininterior.gob.ar/api/menu/periodos")
@@ -29,6 +33,7 @@ consultaPeriodos
             nuevaOption.text = periodo;
             nuevaOption.value = periodo;
             selectAnio.appendChild(nuevaOption);
+            selectAnio.onchange = detectarAnio;
         });
     });
 
@@ -45,7 +50,7 @@ function detectarAnio()
 };
 
 //función que se activa con el evento "onchange" del combo desplegable de "cargo".
-function detectarCargo(respuestaCargos)
+function detectarCargo()
 {
     if (banderaCargo)
     {
@@ -126,8 +131,9 @@ function pedirCargos(anio)
                             let selectCargo = document.getElementById("select-cargo");
                             let nuevaOption = document.createElement('option');
                             nuevaOption.text = cargo.Cargo;
-                            nuevaOption.value = cargo.Cargo;
+                            nuevaOption.value = cargo.IdCargo;
                             selectCargo.appendChild(nuevaOption)
+                            selectCargo.onchange = detectarCargo;
                         })
                 }
             }))
@@ -143,7 +149,7 @@ function rellenarComboDistrito(selectCargo)
                 {
                     indice.Cargos.forEach(cargo =>
                         {
-                            if (cargo.Cargo == selectCargo.value)
+                            if (cargo.IdCargo == selectCargo.value)
                             {
                                 cargo.Distritos.forEach(distrito =>
                                 {
@@ -152,6 +158,7 @@ function rellenarComboDistrito(selectCargo)
                                     nuevaOption.text = distrito.Distrito;
                                     nuevaOption.value = distrito.IdDistrito;
                                     selectDistrito.appendChild(nuevaOption);
+                                    selectDistrito.onchange = detectarDistrito;
                                 })
                                 
                             }
@@ -172,7 +179,7 @@ function rellenarComboSeccion()
                 {
                     indice.Cargos.forEach(cargo =>
                         {
-                            if (cargo.Cargo == selectCargo.value)
+                            if (cargo.IdCargo == selectCargo.value)
                             {
                                 cargo.Distritos.forEach(distrito =>
                                 {
@@ -270,11 +277,12 @@ function mostrarMsjUsuario(tipoMsj, textoMsj)
 
 function mostrarTituloYSubtitulo()
 {
+    let selectCargo = document.getElementById("select-cargo");
     let selectDistrito = document.getElementById("select-distrito");
     let selectSeccion = document.getElementById("select-seccion");
 
     let anio = document.getElementById("select-anio").value;
-    let cargo = document.getElementById("select-cargo").value;
+    let cargo = selectCargo.options[selectCargo.selectedIndex].text;
     let distrito = selectDistrito.options[selectDistrito.selectedIndex].text;
     let seccion = selectSeccion.options[selectSeccion.selectedIndex].text;
     let eleccion = determinarTipoEleccion();
@@ -312,6 +320,7 @@ function mostrarCuadrosColores()
     divBotonAgregar.setAttribute("id", "div-agregar-a-informe");
     let botonAgregar = document.createElement("button");
     botonAgregar.setAttribute("id", "button-agregar-a-informe");
+    botonAgregar.onclick = agregarAInforme;
     let textoBotonAgregar = document.createTextNode("+ AGREGAR A INFORME")
 
     divContenedor.appendChild(divBotonAgregar);
@@ -394,6 +403,17 @@ function limpiarTituloYContenido()
     nuevoNodoContenido.setAttribute("id", "div-contenido");
 };
 
+function armarCuadroProvincia()
+{
+    let selectDistrito = document.getElementById("select-distrito");
+    let containerDivMapa = document.getElementById("grafico-mapa");
+    containerDivMapa.removeAttribute("hidden");
+    let divMapa = document.getElementById("mapa-de-grafico");
+    divMapa.innerHTML = provincias[selectDistrito.value];
+    let nombreMapa = document.getElementById("nombre-mapa");
+    nombreMapa.innerText = selectDistrito.options[selectDistrito.selectedIndex].text;
+};
+
 function filtrarDatos()
 {
     let permiso = comprobarSelecciones();
@@ -409,7 +429,7 @@ function filtrarDatos()
         limpiarTituloYContenido();
 
         let anioEleccion = document.getElementById("select-anio").value;
-        let categoriaId = 2;
+        let categoriaId = document.getElementById("select-cargo").value;
         let distritoId = document.getElementById("select-distrito").value;
         let seccionProvincialId = 0; //lo seteé manualmente en cero porque cuando lo capturamos contenía "null"
         let seccionId = document.getElementById("select-seccion").value;
@@ -440,8 +460,63 @@ function filtrarDatos()
             else
             {
                 mostrarTituloYSubtitulo();
-                mostrarCuadrosColores()
+                mostrarCuadrosColores();
+                armarCuadroProvincia();
+
             }
         });
+    }
+};
+
+function agregarAInforme()
+{
+    let anioEleccion = document.getElementById("select-anio").value;
+    let categoriaId = document.getElementById("select-cargo").value;
+    let distritoId = document.getElementById("select-distrito").value;
+    let seccionProvincialId = 0;
+    let seccionId = document.getElementById("select-seccion").value;
+    let circuitoId = "";
+    let mesaId = "";
+
+    //localStorage.clear();
+    //validación
+    if (localStorage.length == 0)
+    {
+        let cadenaAGuardar = [`${anioEleccion}|${tipoRecuento}|${tipoEleccion}|${categoriaId}|${distritoId}|${seccionProvincialId}|${seccionId}|${circuitoId}|${mesaId}`];
+        localStorage.setItem("INFORMES", JSON.stringify(cadenaAGuardar));
+        console.log("Se almacenó el contenido en el localStorage");
+        limpiarMsjUsuario()
+        mostrarMsjUsuario("msg-exito", " La información filtrada se agregó correctamente");
+
+    }
+    else
+    {
+        let i = 0;
+        let bandera = true;
+        let cadenaAGuardar = `${anioEleccion}|${tipoRecuento}|${tipoEleccion}|${categoriaId}|${distritoId}|${seccionProvincialId}|${seccionId}|${circuitoId}|${mesaId}`;
+        let contenidoStoraged = JSON.parse(localStorage.getItem("INFORMES"));
+
+        while (i < contenidoStoraged.length && bandera)
+        {
+            if (contenidoStoraged[i] == cadenaAGuardar)
+            {
+                console.log("El localStorage ya contiene la información que intenta guardar");
+                bandera = false;
+                limpiarMsjUsuario()
+                mostrarMsjUsuario("msg-alerta", " La información filtrada ya se encuentra agregada al área de informes");
+            }
+            i++;
+        }
+
+        if (bandera)
+        {
+            contenidoStoraged.push(cadenaAGuardar);
+            console.log("El contenido almacenado actual es:");
+            console.log(contenidoStoraged);
+            localStorage.setItem("INFORMES", JSON.stringify(contenidoStoraged));
+            console.log("Se volvió a almacenar el contenido en el localStorage");
+            limpiarMsjUsuario()
+            mostrarMsjUsuario("msg-exito", " La información filtrada se agregó correctamente");
+        }
     }
 };
