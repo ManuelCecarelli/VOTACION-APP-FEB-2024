@@ -456,13 +456,15 @@ function filtrarDatos()
             {
                 mostrarTituloYSubtitulo();
                 mostrarMsjUsuario("msg-alerta", " No se obtuvieron datos del escrutinio solicitado")
+                ocultarCuadrosGrandes();
             }
             else
             {
                 mostrarTituloYSubtitulo();
                 mostrarCuadrosColores();
+                mostrarCuadrosGrandes()
                 armarCuadroProvincia();
-
+                armarCuadroPartidos()
             }
         });
     }
@@ -519,4 +521,123 @@ function agregarAInforme()
             mostrarMsjUsuario("msg-exito", " La información filtrada se agregó correctamente");
         }
     }
+};
+
+function mostrarCuadrosGrandes()
+{
+    let seccionBloques = document.getElementById("sec-bloques-graficos");
+    seccionBloques.removeAttribute("hidden");
+}
+
+function ocultarCuadrosGrandes()
+{
+    let seccionBloques = document.getElementById("sec-bloques-graficos");
+    seccionBloques.setAttribute("hidden", "true");
+}
+
+function armarCuadroPartidos()
+{
+    consultaResultados.then(data =>
+        {
+            data.valoresTotalizadosPositivos.forEach(agrupacion =>
+                {
+                    let nombreAgrupacion = agrupacion.nombreAgrupacion;
+                    let nombreLista;
+                    let cantidadVotosAgrupacion = agrupacion.votos;
+                    let porcentajeVotosAgrupacion = agrupacion.votosPorcentaje;
+
+                    //creamos nuevo bloque de agrupación, y lo ubicamos
+                    let divBloqueAgrupacion = document.createElement("div");
+                    divBloqueAgrupacion.setAttribute("class", "bloque-agrupacion");
+                    let divContainerAgrupacion = document.getElementById("container-agrupacion");
+                    divContainerAgrupacion.appendChild(divBloqueAgrupacion);
+                    //creamos lugar para el nombre, lo ubicamos y rellenamos
+                    let divNombreAgrupacion = document.createElement("div");
+                    divNombreAgrupacion.setAttribute("class", "nombre-agrupacion");
+                    divBloqueAgrupacion.appendChild(divNombreAgrupacion);
+                    let textoNombreAgrupacion = document.createTextNode(nombreAgrupacion);
+                    divNombreAgrupacion.appendChild(textoNombreAgrupacion);
+
+                    if (agrupacion.listas) //lógica para más de una lista
+                    {
+                        agrupacion.listas.forEach(lista =>
+                            {
+                                nombreLista = lista.nombre;
+                                let cantidadVotosLista = lista.votos;
+                                let porcentajeVotosLista = cantidadVotosLista * 100 / cantidadVotosAgrupacion;
+
+                                //creamos nuevo bloque de lista, y lo ubicamos:
+                                let divBloqueLista = document.createElement("div");
+                                divBloqueLista.setAttribute("class", "bloque-lista");
+                                divBloqueAgrupacion.appendChild(divBloqueLista);
+                                //creamos divs para el nombre y los votos:
+                                //nombre lista
+                                let divNombreLista = document.createElement("div");
+                                divNombreLista.setAttribute("class", "nombre-lista");
+                                divBloqueLista.appendChild(divNombreLista);
+                                let textoNombreLista = document.createTextNode(nombreLista);
+                                divNombreLista.appendChild(textoNombreLista);
+                                //votos lista
+                                let divVotosLista = document.createElement("div");
+                                divVotosLista.setAttribute("class", "votos-lista");
+                                divBloqueLista.appendChild(divVotosLista);
+                                let textoVotosLista1 = document.createTextNode(porcentajeVotosLista);
+                                let textoVotosLista2 = document.createTextNode(cantidadVotosLista);
+                                let saltoLinea = document.createElement("br");
+                                divVotosLista.appendChild(textoVotosLista1);
+                                divVotosLista.appendChild(saltoLinea);
+                                divVotosLista.appendChild(textoVotosLista2);
+                            });
+                    }
+                    else //lógica para una única lista
+                    {
+                        nombreLista = "Lista Única";
+                        //Armamos el bloque similar al caso anterior
+                        //creamos nuevo bloque de lista, y lo ubicamos:
+                        let divBloqueLista = document.createElement("div");
+                        divBloqueLista.setAttribute("class", "bloque-lista");
+                        divBloqueAgrupacion.appendChild(divBloqueLista);
+                        //creamos divs para el nombre y los votos:
+                        //nombre lista
+                        let divNombreLista = document.createElement("div");
+                        divNombreLista.setAttribute("class", "nombre-lista");
+                        divBloqueLista.appendChild(divNombreLista);
+                        let textoNombreLista = document.createTextNode(nombreLista);
+                        divNombreLista.appendChild(textoNombreLista);
+                        //votos lista
+                        let divVotosLista = document.createElement("div");
+                        divVotosLista.setAttribute("class", "votos-lista");
+                        divBloqueLista.appendChild(divVotosLista);
+                        let textoVotosLista1 = document.createTextNode(porcentajeVotosAgrupacion);
+                        let textoVotosLista2 = document.createTextNode(cantidadVotosAgrupacion);
+                        let saltoLinea = document.createElement("br");
+                        divVotosLista.appendChild(textoVotosLista1);
+                        divVotosLista.appendChild(saltoLinea);
+                        divVotosLista.appendChild(textoVotosLista2);
+                    }   
+                });
+        });
+
+    /*<div id="div-container-graficos">
+                <div class="div-grafico" id="container-agrupacion"> x
+                    <div class="titulo-de-grafico">Agrupaciones políticas</div> x
+                --------
+                --------
+                    <div class="bloque-agrupacion"> x
+                        <div class="nombre-agrupacion">Juntos por el cambio</div> x
+                        <div class="bloque-lista"> x
+                            <div class="nombre-lista">Juntos</div> x
+                            <div class="votos-lista">80.55%<br>11500 votos</div> x
+                        </div>
+
+                        --------
+                        --------
+
+                        <div class="progress" style="background: var(--grafica-amarillo-claro);">
+                            <div class="progress-bar" style="width:15%; background: var(--grafica-amarillo);"><span
+                                    class="progress-bar-text">15%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div> */
 };

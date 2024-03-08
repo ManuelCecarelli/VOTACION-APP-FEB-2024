@@ -35,10 +35,14 @@
 }
 
 /*------GENERALES VARIOS------*/
+html {
+    min-height: 100%;
+    position: relative;
+}
+
 body {
-    margin: 0;
+    margin: 0 0 164px 0;
     font-family: Roboto;
-    overflow-y: scroll;
 }
 
 p {
@@ -96,7 +100,7 @@ h3 {
 footer {
     background-color: var(--fondo-Footer);
     position: absolute;
-    bottom: none;
+    bottom: 0;
 }
 
 #footer-container {

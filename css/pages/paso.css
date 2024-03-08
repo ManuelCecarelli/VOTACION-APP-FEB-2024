@@ -206,7 +206,6 @@
 #div-container-graficos {
     display: flex;
     gap: 7px;
-    margin-bottom: 20px;
 }
 
 .div-grafico {
@@ -219,13 +218,15 @@
 
 .titulo-de-grafico {
     font-weight: bold;
-    padding: 1.8em 0 0 0;
+    padding: 1.8em 0 15px 0;
     text-align: center;
     white-space: nowrap;
 }
 
-#grafico-datos {
+#container-agrupacion {
     flex: 4 1 0;
+    display: flex;
+    flex-direction: column;
 }
 
 #grafico-mapa {
@@ -236,9 +237,8 @@
     flex: 4 1 0;
 }
 
-#cuerpo-de-grafico {
-    height: 325px;
-    padding: 5px;
+.bloque-agrupacion {
+    padding: 10px;
 }
 
 #mapa-de-grafico{
@@ -247,9 +247,9 @@
     justify-content: center;
 }
 
-.cuerpo-de-grafico-titulo {
+.nombre-agrupacion {
     font-size: 12px;
-    padding: 5px;
+    padding: 7px 0;
     color: var(--textos);
     font-weight: bold;
     border-bottom: 1px solid var(--borde-Grilla);
@@ -257,22 +257,31 @@
 
 }
 
-.cuerpo-de-grafico-texto {
+.bloque-lista {
+    display: flex;
+    justify-content: space-between;
     font-size: 11px;
     color: var(--textos);
-    padding: 5px;
+    padding: 8px 0;
     text-transform: uppercase;
+}
+
+.nombre-lista {
     font-weight: bold;
+}
+
+.votos-lista {
+    line-height: 1.5;
 }
 
 /*barra de progreso*/
 /* Es el estilo que aportaba la consigna N°2 del TPI para copiar desde el pdf*/
 .progress {
-    height: 25px;
+    height: 20px;
     width: 100%;
     border-radius: 5px;
-    margin-top: 8px;
-    margin-bottom: 15px;
+    margin-top: 3px;
+    margin-bottom: 10px;
 }
 
 .progress-bar {
@@ -284,6 +293,7 @@
 }
 
 .progress-bar-text {
+    font-size: 14px;
     margin-left: 10px;
     font-weight: bold;
     color: var(--textos);
