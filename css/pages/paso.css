@@ -209,6 +209,7 @@
 }
 
 .div-grafico {
+    height: 325px;
     border-radius: 25px;
     border-style: solid;
     border-width: 1px;
@@ -227,6 +228,13 @@
     flex: 4 1 0;
     display: flex;
     flex-direction: column;
+}
+
+#container-bloques {
+    display: flex;
+    flex-direction: column;
+    overflow: auto;
+    margin-bottom: 18px;
 }
 
 #grafico-mapa {

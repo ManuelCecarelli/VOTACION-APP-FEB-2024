@@ -464,7 +464,8 @@ function filtrarDatos()
                 mostrarCuadrosColores();
                 mostrarCuadrosGrandes()
                 armarCuadroProvincia();
-                armarCuadroPartidos()
+                limpiarCuadroPartidos();
+                armarCuadroPartidos();
             }
         });
     }
@@ -539,6 +540,7 @@ function armarCuadroPartidos()
 {
     consultaResultados.then(data =>
         {
+            let indice = 0;
             data.valoresTotalizadosPositivos.forEach(agrupacion =>
                 {
                     let nombreAgrupacion = agrupacion.nombreAgrupacion;
@@ -549,8 +551,8 @@ function armarCuadroPartidos()
                     //creamos nuevo bloque de agrupación, y lo ubicamos
                     let divBloqueAgrupacion = document.createElement("div");
                     divBloqueAgrupacion.setAttribute("class", "bloque-agrupacion");
-                    let divContainerAgrupacion = document.getElementById("container-agrupacion");
-                    divContainerAgrupacion.appendChild(divBloqueAgrupacion);
+                    let divContainerBloques = document.getElementById("container-bloques");
+                    divContainerBloques.appendChild(divBloqueAgrupacion);
                     //creamos lugar para el nombre, lo ubicamos y rellenamos
                     let divNombreAgrupacion = document.createElement("div");
                     divNombreAgrupacion.setAttribute("class", "nombre-agrupacion");
@@ -565,6 +567,7 @@ function armarCuadroPartidos()
                                 nombreLista = lista.nombre;
                                 let cantidadVotosLista = lista.votos;
                                 let porcentajeVotosLista = cantidadVotosLista * 100 / cantidadVotosAgrupacion;
+                                porcentajeVotosLista = Number(porcentajeVotosLista.toFixed(2));
 
                                 //creamos nuevo bloque de lista, y lo ubicamos:
                                 let divBloqueLista = document.createElement("div");
@@ -581,12 +584,28 @@ function armarCuadroPartidos()
                                 let divVotosLista = document.createElement("div");
                                 divVotosLista.setAttribute("class", "votos-lista");
                                 divBloqueLista.appendChild(divVotosLista);
-                                let textoVotosLista1 = document.createTextNode(porcentajeVotosLista);
-                                let textoVotosLista2 = document.createTextNode(cantidadVotosLista);
+                                let textoVotosLista1 = document.createTextNode(`${porcentajeVotosLista}%`);
+                                let textoVotosLista2 = document.createTextNode(`${cantidadVotosLista} votos`);
                                 let saltoLinea = document.createElement("br");
                                 divVotosLista.appendChild(textoVotosLista1);
                                 divVotosLista.appendChild(saltoLinea);
                                 divVotosLista.appendChild(textoVotosLista2);
+                                //creamos la barra de progreso
+                                let divBarraProgreso = document.createElement("div");
+                                divBarraProgreso.setAttribute("class", "progress");
+                                divBarraProgreso.setAttribute("style", `background: ${colores[indice].colorLiviano};`);
+                                divBloqueAgrupacion.appendChild(divBarraProgreso);
+                                let divRellenoBarraProgreso = document.createElement("div");
+                                divRellenoBarraProgreso.setAttribute("class", "progress-bar");
+                                divRellenoBarraProgreso.setAttribute("style", `width: ${porcentajeVotosLista}%; background: ${colores[indice].colorPleno};`)
+                                divBarraProgreso.appendChild(divRellenoBarraProgreso);
+                                let textoRellenoBarraProgreso = document.createElement("span");
+                                textoRellenoBarraProgreso.setAttribute("class", "progress-bar-text");
+                                divRellenoBarraProgreso.appendChild(textoRellenoBarraProgreso);
+                                textoRellenoBarraProgreso.innerHTML = `${porcentajeVotosLista}%`
+                                //aumentamos indice para los colores almacenados
+                                indice++;
+
                             });
                     }
                     else //lógica para una única lista
@@ -608,12 +627,27 @@ function armarCuadroPartidos()
                         let divVotosLista = document.createElement("div");
                         divVotosLista.setAttribute("class", "votos-lista");
                         divBloqueLista.appendChild(divVotosLista);
-                        let textoVotosLista1 = document.createTextNode(porcentajeVotosAgrupacion);
-                        let textoVotosLista2 = document.createTextNode(cantidadVotosAgrupacion);
+                        let textoVotosLista1 = document.createTextNode(`${porcentajeVotosAgrupacion}%`);
+                        let textoVotosLista2 = document.createTextNode(`${cantidadVotosAgrupacion} votos`);
                         let saltoLinea = document.createElement("br");
                         divVotosLista.appendChild(textoVotosLista1);
                         divVotosLista.appendChild(saltoLinea);
                         divVotosLista.appendChild(textoVotosLista2);
+                        //creamos la barra de progreso
+                        let divBarraProgreso = document.createElement("div");
+                        divBarraProgreso.setAttribute("class", "progress");
+                        divBarraProgreso.setAttribute("style", `background: ${colores[indice].colorLiviano};`);
+                        divBloqueAgrupacion.appendChild(divBarraProgreso);
+                        let divRellenoBarraProgreso = document.createElement("div");
+                        divRellenoBarraProgreso.setAttribute("class", "progress-bar");
+                        divRellenoBarraProgreso.setAttribute("style", `width: ${porcentajeVotosAgrupacion}%; background: ${colores[indice].colorPleno};`)
+                        divBarraProgreso.appendChild(divRellenoBarraProgreso);
+                        let textoRellenoBarraProgreso = document.createElement("span");
+                        textoRellenoBarraProgreso.setAttribute("class", "progress-bar-text");
+                        divRellenoBarraProgreso.appendChild(textoRellenoBarraProgreso);
+                        textoRellenoBarraProgreso.innerHTML = `${porcentajeVotosAgrupacion}%`
+                        //aumentamos indice para los colores almacenados
+                        indice++;
                     }   
                 });
         });
@@ -621,6 +655,7 @@ function armarCuadroPartidos()
     /*<div id="div-container-graficos">
                 <div class="div-grafico" id="container-agrupacion"> x
                     <div class="titulo-de-grafico">Agrupaciones políticas</div> x
+                    <div class="container-bloques"></div> x
                 --------
                 --------
                     <div class="bloque-agrupacion"> x
@@ -633,11 +668,20 @@ function armarCuadroPartidos()
                         --------
                         --------
 
-                        <div class="progress" style="background: var(--grafica-amarillo-claro);">
-                            <div class="progress-bar" style="width:15%; background: var(--grafica-amarillo);"><span
-                                    class="progress-bar-text">15%</span>
+                        <div class="progress" style="background: var(--grafica-amarillo-claro);"> x
+                            <div class="progress-bar" style="width:15%; background: var(--grafica-amarillo);"> x
+                                <span class="progress-bar-text">15%</span> x
                             </div>
                         </div>
                     </div>
                 </div> */
 };
+
+function limpiarCuadroPartidos()
+{
+    let divAReemplazar = document.getElementById("container-bloques");
+    let nodoPadre = document.getElementById("container-agrupacion");
+    let nuevoDiv = document.createElement("div");
+    nodoPadre.replaceChild(nuevoDiv, divAReemplazar);
+    nuevoDiv.setAttribute("id", "container-bloques");
+}

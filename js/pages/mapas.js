@@ -28,102 +28,102 @@ export const provincias = {
 export const colores = [
     {
         nombre: "--grafica-celeste",
-        color: "rgb(0, 169, 232)",
-        colorClaro: "rgba(0, 169, 232, 0.1)"
+        colorPleno: "rgba(0, 169, 232, 0.7)",
+        colorLiviano: "rgba(0, 169, 232, 0.1)"
     },
     {
         nombre: "--grafica-verde",
-        color: "rgb(52, 194, 82)",
-        colorClaro: "rgba(52, 194, 82, 0.1)"
+        colorPleno: "rgba(52, 194, 82, 0.7)",
+        colorLiviano: "rgba(52, 194, 82, 0.1)"
     },
     {
         nombre: "--grafica-amarillo",
-        color: "rgb(255, 207, 51)",
-        colorClaro: "rgba(255, 207, 51, 0.1)"
+        colorPleno: "rgba(255, 207, 51, 0.7)",
+        colorLiviano: "rgba(255, 207, 51, 0.1)"
     },
     {
         nombre: "--grafica-rosa",
-        color: "rgb(255, 105, 180)",
-        colorClaro: "rgba(255, 105, 180, 0.1)"
+        colorPleno: "rgba(255, 105, 180, 0.7)",
+        colorLiviano: "rgba(255, 105, 180, 0.1)"
     },
     {
         nombre: "--grafica-violeta",
-        color: "rgb(148, 0, 211)",
-        colorClaro: "rgba(148, 0, 211, 0.1)"
+        colorPleno: "rgba(148, 0, 211, 0.7)",
+        colorLiviano: "rgba(148, 0, 211, 0.1)"
     },
     {
         nombre: "--grafica-naranja",
-        color: "rgb(255, 165, 0)",
-        colorClaro: "rgba(255, 165, 0, 0.1)"
+        colorPleno: "rgba(255, 165, 0, 0.7)",
+        colorLiviano: "rgba(255, 165, 0, 0.1)"
     },
     {
         nombre: "--grafica-bordo",
-        color: "rgb(171, 40, 40)",
-        colorClaro: "rgba(171, 40, 40, 0.3)"
+        colorPleno: "rgba(171, 40, 40, 0.7)",
+        colorLiviano: "rgba(171, 40, 40, 0.3)"
     },
     {
         nombre: "--grafica-azul",
-        color: "rgb(0, 0, 255)",
-        colorClaro: "rgba(0, 0, 255, 0.1)"
+        colorPleno: "rgba(0, 0, 255, 0.7)",
+        colorLiviano: "rgba(0, 0, 255, 0.1)"
     },
     {
         nombre: "--grafica-gris",
-        color: "rgb(128, 128, 128)",
-        colorClaro: "rgba(128, 128, 128, 0.1)"
+        colorPleno: "rgba(128, 128, 128, 0.7)",
+        colorLiviano: "rgba(128, 128, 128, 0.1)"
     },
     {
         nombre: "--grafica-amarillo-claro",
-        color: "rgb(255, 255, 102)",
-        colorClaro: "rgba(255, 255, 102, 0.1)"
+        colorPleno: "rgba(255, 255, 102, 0.7)",
+        colorLiviano: "rgba(255, 255, 102, 0.1)"
     },
     {
         nombre: "--grafica-verde-azulado",
-        color: "rgb(0, 128, 128)",
-        colorClaro: "rgba(0, 128, 128, 0.1)"
+        colorPleno: "rgba(0, 128, 128, 0.7)",
+        colorLiviano: "rgba(0, 128, 128, 0.1)"
     },
     {
         nombre: "--grafica-morado",
-        color: "rgb(128, 0, 128)",
-        colorClaro: "rgba(128, 0, 128, 0.1)"
+        colorPleno: "rgba(128, 0, 128, 0.7)",
+        colorLiviano: "rgba(128, 0, 128, 0.1)"
     },
     {
         nombre: "--grafica-rojo-oscuro",
-        color: "rgb(139, 0, 0)",
-        colorClaro: "rgba(139, 0, 0, 0.1)"
+        colorPleno: "rgba(139, 0, 0, 0.7)",
+        colorLiviano: "rgba(139, 0, 0, 0.1)"
     },
     {
         nombre: "--grafica-rosa-claro",
-        color: "rgb(255, 182, 193)",
-        colorClaro: "rgba(255, 182, 193, 0.1)"
+        colorPleno: "rgba(255, 182, 193, 0.7)",
+        colorLiviano: "rgba(255, 182, 193, 0.1)"
     },
     {
         nombre: "--grafica-azul-oscuro",
-        color: "rgb(0, 0, 139)",
-        colorClaro: "rgba(0, 0, 139, 0.1)"
+        colorPleno: "rgba(0, 0, 139, 0.7)",
+        colorLiviano: "rgba(0, 0, 139, 0.1)"
     },
     {
         nombre: "--grafica-amarillo-oscuro",
-        color: "rgb(184, 134, 11)",
-        colorClaro: "rgba(184, 134, 11, 0.1)"
+        colorPleno: "rgba(184, 134, 11, 0.7)",
+        colorLiviano: "rgba(184, 134, 11, 0.1)"
     },
     {
         nombre: "--grafica-verde-oscuro",
-        color: "rgb(0, 100, 0)",
-        colorClaro: "rgba(0, 100, 0, 0.1)"
+        colorPleno: "rgba(0, 100, 0, 0.7)",
+        colorLiviano: "rgba(0, 100, 0, 0.1)"
     },
     {
         nombre: "--grafica-naranja-oscuro",
-        color: "rgb(255, 69, 0)",
-        colorClaro: "rgba(255, 69, 0, 0.1)"
+        colorPleno: "rgba(255, 69, 0, 0.7)",
+        colorLiviano: "rgba(255, 69, 0, 0.1)"
     },
     {
         nombre: "--grafica-marron",
-        color: "rgb(139, 69, 19)",
-        colorClaro: "rgba(139, 69, 19, 0.1)"
+        colorPleno: "rgba(139, 69, 19, 0.7)",
+        colorLiviano: "rgba(139, 69, 19, 0.1)"
     },
     {
         nombre: "--grafica-gris-oscuro",
-        color: "rgb(64, 64, 64)",
-        colorClaro: "rgba(64, 64, 64, 0.1)"
+        colorPleno: "rgba(64, 64, 64, 0.7)",
+        colorLiviano: "rgba(64, 64, 64, 0.1)"
     },
 ];
