@@ -466,6 +466,8 @@ function filtrarDatos()
                 armarCuadroProvincia();
                 limpiarCuadroPartidos();
                 armarCuadroPartidos();
+                limpiarGraficoBarras();
+                armarGraficoBarras();
             }
         });
     }
@@ -603,10 +605,8 @@ function armarCuadroPartidos()
                                 textoRellenoBarraProgreso.setAttribute("class", "progress-bar-text");
                                 divRellenoBarraProgreso.appendChild(textoRellenoBarraProgreso);
                                 textoRellenoBarraProgreso.innerHTML = `${porcentajeVotosLista}%`
-                                //aumentamos indice para los colores almacenados
-                                indice++;
-
                             });
+                        indice++;
                     }
                     else //lógica para una única lista
                     {
@@ -684,4 +684,126 @@ function limpiarCuadroPartidos()
     let nuevoDiv = document.createElement("div");
     nodoPadre.replaceChild(nuevoDiv, divAReemplazar);
     nuevoDiv.setAttribute("id", "container-bloques");
+}
+
+function armarGraficoBarras()
+{
+    consultaResultados.then(data =>
+        {
+            let cantidadAgrupaciones = data.valoresTotalizadosPositivos.length;
+            let indice = 0;
+            if (cantidadAgrupaciones < 8)
+            {
+                let anchoBarra = `${(100 / (data.valoresTotalizadosPositivos.length + 2)).toFixed(2)}`
+
+                data.valoresTotalizadosPositivos.forEach(agrupacion =>
+                    {
+                        let nombreAgrupacion = agrupacion.nombreAgrupacion;
+                        let porcentajeVotosAgrupacion = agrupacion.votosPorcentaje;
+    
+                        //creamos nuevo div de barra para la agrupación, y lo ubicamos:
+                        let nuevaBarra = document.createElement("div");
+                        nuevaBarra.setAttribute("class", "bar");
+                        nuevaBarra.setAttribute("style", `--bar-value: ${porcentajeVotosAgrupacion}%; background-color: ${colores[indice].colorPleno}; --bar-width: ${anchoBarra}%;`);
+                        let nodoPadre = document.getElementById("sub-grid-2");
+                        nodoPadre.appendChild(nuevaBarra);
+                        let textoBarra = document.createElement("p");
+                        nuevaBarra.appendChild(textoBarra);
+                        let contenidoTexto = document.createTextNode(nombreAgrupacion);
+                        textoBarra.appendChild(contenidoTexto);
+                        indice++;
+                    });
+            }
+            else
+            {
+                let anchoBarra = `11.11` //resultado de: (100 / (7 + 2)).toFixed(2);
+                let porcentajeAcumulado = 0;
+
+                data.valoresTotalizadosPositivos.forEach(agrupacion =>
+                    {
+                        let porcentajeVotosAgrupacion = agrupacion.votosPorcentaje;
+                        if (indice < 6)
+                        {
+                            let nombreAgrupacion = agrupacion.nombreAgrupacion;
+                            
+                            //creamos nuevo div de barra para la agrupación, y lo ubicamos:
+                            let nuevaBarra = document.createElement("div");
+                            nuevaBarra.setAttribute("class", "bar");
+                            nuevaBarra.setAttribute("style", `--bar-value: ${porcentajeVotosAgrupacion}%; background-color: ${colores[indice].colorPleno}; --bar-width: ${anchoBarra}%;`);
+                            let nodoPadre = document.getElementById("sub-grid-2");
+                            nodoPadre.appendChild(nuevaBarra);
+                            let textoBarra = document.createElement("p");
+                            nuevaBarra.appendChild(textoBarra);
+                            let contenidoTexto = document.createTextNode(nombreAgrupacion);
+                            textoBarra.appendChild(contenidoTexto);
+                            indice++;
+                        }
+                        else
+                        {
+                            porcentajeAcumulado = porcentajeAcumulado + porcentajeVotosAgrupacion;
+                            if (indice == cantidadAgrupaciones - 1)
+                            {
+                                //creamos última barra y la ubicamos:
+                                let nuevaBarra = document.createElement("div");
+                                nuevaBarra.setAttribute("class", "bar");
+                                nuevaBarra.setAttribute("style", `--bar-value: ${porcentajeAcumulado}%; background-color: grey; --bar-width: ${anchoBarra}%;`);
+                                let nodoPadre = document.getElementById("sub-grid-2");
+                                nodoPadre.appendChild(nuevaBarra);
+                                let textoBarra = document.createElement("p");
+                                nuevaBarra.appendChild(textoBarra);
+                                let contenidoTexto = document.createTextNode("Otros");
+                                textoBarra.appendChild(contenidoTexto);
+                            }
+                            else
+                            {
+                                indice++;
+                            }
+                        }
+                    });
+            };
+        });
+           
+    /*<div class="div-grafico" id="grafico-barras">
+                    <div class="titulo-de-grafico">Resumen de Votos</div>
+                    <div class="grid-container">
+                        <div class="grid">
+                            <div id="sub-grid-1">
+                                <div>100%</div>
+                                <div>50%</div>
+                                <div>0%</div>
+                            </div>
+                            <div id="sub-grid-2"> x
+                                <div class="bar" style="--bar-value: 23%;">
+                                    <p>PP</p>
+                                </div>
+                                <div class="bar" style="--bar-value: 7%;" data-name="Partido 2" title="Tumblr 7%">
+                                    <p>PP</p>
+                                </div>
+                                <div class="bar" style="--bar-value: 38%;" data-name="Partido 3" title="Facebook 38%">
+                                    <p>PP</p>
+                                </div>
+                                <div class="bar" style="--bar-value: 35%;" data-name="Partido 4" title="YouTube 35%">
+                                    <p>PP</p>
+                                </div>
+                                <div class="bar" style="--bar-value: 30%;" data-name="Partido 5" title="LinkedIn 30%">
+                                    <p>PP</p>
+                                </div>
+                                <div class="bar" style="--bar-value: 5%;" data-name="Partido 6" title="Twitter 5%">
+                                    <p>PP</p>
+                                </div>
+                                <div class="bar" style="--bar-value: 20%;" data-name="Partido 7" title="Other 20%">
+                                    <p>PP</p>
+                                </div>
+                                <div class="bar" style="--bar-value: 20%;" data-name="Otros" title="Other 20%">
+                                    <p>PP</p>
+    */
+};
+
+function limpiarGraficoBarras()
+{
+    let nuevoDivHijo = document.createElement("div");
+    let nodoPadre = document.getElementById("grid");
+    let antiguoHijo = document.getElementById("sub-grid-2");
+    nodoPadre.replaceChild(nuevoDivHijo, antiguoHijo);
+    nuevoDivHijo.setAttribute("id", "sub-grid-2");
 }

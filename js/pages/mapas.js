@@ -52,9 +52,9 @@ export const colores = [
         colorLiviano: "rgba(148, 0, 211, 0.1)"
     },
     {
-        nombre: "--grafica-naranja",
-        colorPleno: "rgba(255, 165, 0, 0.7)",
-        colorLiviano: "rgba(255, 165, 0, 0.1)"
+        nombre: "--grafica-roja",
+        colorPleno: "rgba(255, 0, 0, 0.7)",
+        colorLiviano: "rgba(255, 0, 0, 0.1)"
     },
     {
         nombre: "--grafica-bordo",
