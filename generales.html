@@ -12,8 +12,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
         integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <script src="js/common.js" defer></script>
-    <script src="js/pages/generales.js" defer></script>
+    <script type="module" src="js/pages/generales.js"></script>
 </head>
 
 <body>
@@ -29,15 +28,21 @@
         <!--Barra de menú principal-->
         <div id="container-menu-page">
             <div id="menu-page">
-                <select class="desplegable" name="" id="">
-                    <option value="">Año</option>
+                <!--Combos seleccionables-->
+                <select class="desplegable" name="select-anio" id="select-anio">
+                    <option value="#" disabled selected>Año</option>
                 </select>
-                <select class="desplegable" name="" id="">
-                    <option value="">Cargo</option>
+                <select class="desplegable" name="select-cargo" id="select-cargo">
+                    <option value="#" disabled selected>Cargo</option>
                 </select>
-                <select class="desplegable" name="" id="">
-                    <option value="">Distrito</option>
+                <select class="desplegable" name="select-distrito" id="select-distrito">
+                    <option value="#" disabled selected>Distrito</option>
                 </select>
+                <input type="hidden" id="hdSeccionProvincial" name="hdSeccionProvincial" value="">
+                <select class="desplegable" name="select-seccion" id="select-seccion">
+                    <option value="#" disabled selected>Sección</option>
+                </select>
+                <!--Botones-->
                 <a href="#"><button class="menu-button" id="filtrar-button"><i class="fa-solid fa-magnifying-glass"></i>
                         FILTRAR</button></a>
                 <a href="paso.html"><button class="menu-button" id="paso-button">PASO</button></a>
@@ -48,82 +53,53 @@
     </header>
     <!-- Contenido principal de la página -->
     <main>
+        <section id="sec-messages">
+            <!--Sección para mostrale mensajes al usuario-->
+            <div id="div-container-msg">
+                <div class="cuadro-msg" id="msg-alerta">
+                    <p><i class="fa-solid fa-exclamation"></i> Debe seleccionar los valores a filtrar y hacer clic en el
+                        botón "FILTRAR"</p>
+                </div>
+            </div>
+        </section>
         <section id="sec-titulo">
             <!--Seccion para agregar un título-->
+            <div id="div-titulo"></div>
         </section>
-        <section id="sec-messages">
-            <div id="div-container-msg">
-                <div class="cuadro-msg" id="msg-exito">
-                    <p><i class="fa-solid fa-thumbs-up"></i> Se agregó con éxito el resultado al informe</p>
-                </div>
-                <div class="cuadro-msg" id="msg-error">
-                    <p><i class="fa-solid fa-triangle-exclamation"></i> Error. Se prdujo un error al intentar agregar
-                        resultados al informe</p>
-                </div>
-                <div class="cuadro-msg" id="msg-alerta">
-                    <p><i class="fa-solid fa-exclamation"></i> La operación no se pudo completar</p>
-                </div>
-            </div>
-        </section>
-        <br>
         <section id="sec-contenido">
-            <!--Seccion para contenido de la página-->
-            <div id="div-titulo">
-                <h1>Elecciones 2021 | Generales</h1>
-                <p class="texto-path">2020 > Generales > Provisorio > Senadores Nacionales > Buenos Aires</p>
-            </div>
+            <!--Seccion para contenido de la página (Botón agregar y cuadros de colores)-->
             <div id="div-contenido">
-                <div id="div-agregar-a-informe">
-                    <button id="button-agregar-a-informe">+ AGREGAR A INFORME</button>
-                </div>
-                <div id="div-recuadros-resumen">
-                    <div class="recuadro-resumen" id="recuadro-urna"><img src="img/svg/urna.svg" alt=""> Mesas
-                        escrutadas</div>
-                    <div class="recuadro-resumen" id="recuadro-personas"><img src="img/svg/personas.svg" alt="">
-                        Electores</div>
-                    <div class="recuadro-resumen" id="recuadro-manos"><img src="img/svg/manos.svg" alt=""> Participación
-                        sobre escrutado</div>
-                </div>
+
             </div>
+        </section>
+        <section id="sec-bloques-graficos" hidden>
+            <!--Seccion para contenido de la página (los 3 recuadros de info mayor)-->
             <div id="div-container-graficos">
-                <div class="div-grafico" id="grafico-datos">
+                <!--Cuadro de Agrupaciones-->
+                <div class="div-grafico" id="container-agrupacion">
                     <div class="titulo-de-grafico">Agrupaciones políticas</div>
-                    <div id="cuerpo-de-grafico">
-                        <div class="cuerpo-de-grafico-titulo">Juntos por el cambio</div>
-                        <div class="cuerpo-de-grafico-texto"> Juntos</div>
-                        <div class="progress" style="background: var(--grafica-amarillo-claro);">
-                            <div class="progress-bar" style="width:15%; background: var(--grafica-amarillo);"><span
-                                    class="progress-bar-text">15%</span> </div>
-                        </div>
+                    <div id="container-bloques"></div>
+                </div>
+                <!--Cuadro de Mapa de Provincia-->
+                <div class="div-grafico" id="grafico-mapa" hidden>
+                    <div class="titulo-de-grafico" id="nombre-mapa"></div>
+                    <div id="mapa-de-grafico">
                     </div>
                 </div>
-                <div class="div-grafico" id="grafico-mapa">
-                    <div class="titulo-de-grafico">Buenos Aires</div>
-                    <div class="mapa-de-grafico">
-                        <img src="img/mapas/mendoza.svg" alt="#">
-                    </div>
-                </div>
+                <!--Cuadro de Grafico de barras-->
                 <div class="div-grafico" id="grafico-barras">
                     <div class="titulo-de-grafico">Resumen de Votos</div>
-                    <div class="chart-wrap horizontal">
-                        <div class="title">Título de la grafica</div>
-                        <div class="grid">
-                            <div class="bar" style="--bar-value:85%;" data-name="Partido 1" title="Your Blog
-                    85%"></div>
-                            <div class="bar" style="--bar-value:23%;" data-name="Partido 2" title="Medium
-                    23%"></div>
-                            <div class="bar" style="--bar-value:7%;" data-name="Partido 3" title="Tumblr
-                    7%"></div>
-                            <div class="bar" style="--bar-value:38%;" data-name="Partido 4" title="Facebook
-                    38%"></div>
-                            <div class="bar" style="--bar-value:35%;" data-name="Partido 5" title="YouTube
-                    35%"></div>
-                            <div class="bar" style="--bar-value:30%;" data-name="Partido 6" title="LinkedIn
-                    30%"></div>
-                            <div class="bar" style="--bar-value:5%;" data-name="Partido 7" title="Twitter
-                    5%"></div>
-                            <div class="bar" style="--bar-value:20%;" data-name="Otros" title="Other
-                    20%"></div>
+                    <div class="grid-container">
+                        <div id="grid">
+                            <div id="sub-grid-1">
+                                <div>100%</div>
+                                <div>75%</div>
+                                <div>50%</div>
+                                <div>25%</div>
+                                <div>0%</div>
+                            </div>
+                            <div id="sub-grid-2">
+                            </div>
                         </div>
                     </div>
                 </div>

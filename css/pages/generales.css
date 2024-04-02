@@ -66,18 +66,19 @@
 /*-DESPLEGABLES-*/
 
 .desplegable {
-    background-color: transparent;
+    background-color: var(--fondo-Menu);
     border-style: none;
     font-size: 14px;
     height: 30px;
+    width: 120px;
     padding: 5px;
     color: var(--celeste);
     font-weight: bold;
 }
 
 .desplegable:hover {
-    background-color: transparent;
-    color: #FFF;
+    background-color: var(--fondo-Menu);
+    color: white;
 }
 
 /*------SECCION DE MENSAJES AL USUARIO------*/
@@ -96,8 +97,7 @@
     margin: 20px auto;
     padding: 15px;
     border-radius: 10px;
-    font-weight: 200;
-    font-size: 12px;
+    
 }
 
 .cuadro-msg i,
@@ -105,8 +105,15 @@
     color: #FFF;
 }
 
+.cuadro-msg p {
+    font-weight: bold;
+    font-size: 14px;
+    margin: 7px;
+
+}
+
 .cuadro-msg i {
-    font-size: 16px;
+    font-size: 18px;
 }
 
 #msg-exito {
@@ -133,11 +140,11 @@
 }
 
 #div-titulo h1 {
-    margin: 0;
+    margin: 30px auto 0 auto;
 }
 
 #div-titulo p {
-    margin: 0 0 20px 0;
+    margin: 0 0 25px 0;
     color: var(--celeste);
     font-size: 14px;
 }
@@ -174,7 +181,7 @@
     width: 184px;
     height: 70px;
     padding: 0.5rem 1rem;
-    font-size: 12px;
+    font-size: 14px;
     color: #FFF;
 }
 
@@ -196,13 +203,14 @@
 
 /*-GRAFICOS-*/
 
+/*-Generales-*/
 #div-container-graficos {
     display: flex;
     gap: 7px;
-    margin-bottom: 20px;
 }
 
 .div-grafico {
+    height: 325px;
     border-radius: 25px;
     border-style: solid;
     border-width: 1px;
@@ -212,73 +220,172 @@
 
 .titulo-de-grafico {
     font-weight: bold;
-    padding: 1.8em 0 0 0;
+    padding: 1.8em 0 15px 0;
     text-align: center;
     white-space: nowrap;
 }
 
-#grafico-datos {
+/*Grafico Agrupación*/
+
+#container-agrupacion {
     flex: 4 1 0;
+    display: flex;
+    flex-direction: column;
 }
 
-#grafico-mapa {
-    flex: 3 1 0;
+#container-bloques {
+    display: flex;
+    flex-direction: column;
+    overflow: auto;
+    margin-bottom: 18px;
 }
 
-#grafico-barras {
-    flex: 4 1 0;
+.bloque-agrupacion {
+    padding: 10px;
 }
 
-#cuerpo-de-grafico {
-    height: 325px;
-    padding: 5px;
-}
-
-.cuerpo-de-grafico-titulo {
+.nombre-agrupacion {
     font-size: 12px;
-    padding: 5px;
+    padding: 7px 0;
     color: var(--textos);
     font-weight: bold;
     border-bottom: 1px solid var(--borde-Grilla);
     text-transform: uppercase;
-
 }
 
-.cuerpo-de-grafico-texto {
+.bloque-lista {
+    display: flex;
+    justify-content: space-between;
     font-size: 11px;
     color: var(--textos);
-    padding: 5px;
+    padding: 8px 0;
     text-transform: uppercase;
+}
+
+.nombre-lista {
     font-weight: bold;
+}
+
+.votos-lista {
+    line-height: 1.5;
 }
 
 /*barra de progreso*/
 /* Es el estilo que aportaba la consigna N°2 del TPI para copiar desde el pdf*/
 .progress {
-    height: 25px;
+    height: 20px;
     width: 100%;
     border-radius: 5px;
-    margin-top: 8px;
-    margin-bottom: 15px;
+    margin-top: 3px;
+    margin-bottom: 10px;
 }
 
 .progress-bar {
     height: 100%;
     display: flex;
     align-items: center;
+    justify-content: flex-start;
     transition: width 0.25s;
     border-radius: 5px;
 }
 
 .progress-bar-text {
+    font-size: 14px;
     margin-left: 10px;
     font-weight: bold;
     color: var(--textos);
 }
 
+/*Gráfico de Mapa de Provincia*/
+
+#grafico-mapa {
+    flex: 3 1 0;
+}
+
+#mapa-de-grafico{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/*Gráfico de barras*/
+
+#grafico-barras {
+    flex: 4 1 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.grid-container {
+    /*border: 1px solid blue;*/
+    height: 100%;
+    width: 100%;
+    display: flex;
+}
+
+#grid {
+    width: 90%;
+    height: 95%;
+    margin: auto;
+    display: flex;
+    /*border: 1px solid rgb(255, 0, 25);*/
+}
+
+#sub-grid-1 {
+    flex: 1 0 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    width: 100%;
+    /*border: 1px solid rgb(255, 0, 25);*/
+    font-size: 13px;
+    font-weight: bold;
+    text-align: center;
+}
+
+#sub-grid-2 {
+    flex: 9 0 0;
+    display: flex;
+    height: 93.5%;
+    width: 100%;
+    max-width: 400px;
+    margin: auto 0;
+    border-bottom: 2px solid rgb(149, 149, 149);
+    border-top: 2px solid rgb(149, 149, 149);
+    align-items: end;
+    justify-content: space-around;
+}
+
+#scale-bar {
+    background-color: antiquewhite;
+    height: 100%;
+    width: 100%;
+}
+
+.bar {
+    height: var(--bar-value);
+    width: var(--bar-width);
+    margin: 0;
+    border-radius: 3px 3px 0 0;
+}
+
+.bar:hover {
+    opacity: 0.7;
+}
+
+.bar p {
+    font-size: 12px;
+    text-align: center;
+    transform: rotate(-45deg);
+    white-space: nowrap;
+    margin-top: -32px;
+}
+
+
 /* Estilo del gráfico de barras que copié directamente desde el pdf de la consigna N°2 del TPI*/
 
-.chart-wrap {
+/*.chart-wrap {
     --chart-width: 260px;
     --grid-color: #aaa;
     --bar-thickness: 25px;
@@ -296,13 +403,13 @@
 }
 
 /* cuando definimos el gráfico en horizontal, lo giramos 90 grados */
-.chart-wrap.horizontal .grid {
+/*.chart-wrap.horizontal .grid {
     transform: rotate(-90deg);
 }
 
 .chart-wrap.horizontal .bar::after {
     /* giramos las letras para horizontal*/
-    transform: rotate(45deg);
+    /*transform: rotate(45deg);
     padding-top: 0px;
     display: block;
 }
@@ -318,7 +425,7 @@
 }
 
 /* posicionamos el % del gráfico*/
-.chart-wrap .grid::before {
+/*.chart-wrap .grid::before {
     font-size: 0.8em;
     font-weight: bold;
     content: '0%';
@@ -337,7 +444,7 @@
 }
 
 /* giramos las valores de 0% y 100% para horizontal */
-.chart-wrap.horizontal .grid::before,
+/*.chart-wrap.horizontal .grid::before,
 .chart-wrap.horizontal .grid::after {
     transform: rotate(90deg);
 }
@@ -347,7 +454,7 @@
     height: var(--bar-thickness);
     margin: var(--bar-spacing) 0;
     background-color: green /*var(--bar-color)*/;
-    border-radius: 0 var(--bar-rounded) var(--bar-rounded) 0;
+    /*border-radius: 0 var(--bar-rounded) var(--bar-rounded) 0;
 }
 
 .chart-wrap .bar:hover {

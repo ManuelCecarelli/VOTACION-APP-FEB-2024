@@ -492,7 +492,6 @@ function agregarAInforme()
         console.log("Se almacenó el contenido en el localStorage");
         limpiarMsjUsuario()
         mostrarMsjUsuario("msg-exito", " La información filtrada se agregó correctamente");
-
     }
     else
     {
