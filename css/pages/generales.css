@@ -328,6 +328,7 @@
     height: 95%;
     margin: auto;
     display: flex;
+    overflow: hidden;
     /*border: 1px solid rgb(255, 0, 25);*/
 }
 
