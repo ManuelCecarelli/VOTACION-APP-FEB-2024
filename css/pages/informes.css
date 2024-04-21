@@ -100,7 +100,7 @@
 
 #div-container-grilla {
     display: grid;
-    grid-template-columns: 307px 102px 409px 206px;
+    grid-template-columns: 280px 102px 409px 233px;
     margin: 0 auto 50 auto;
     border-radius: 15px;
     border: 1px solid var(--borde-Grilla);
@@ -115,15 +115,16 @@
     font-size: 14px;
     font-weight: bold;
     text-transform: uppercase;
-    border-bottom: 1px solid var(--borde-inferior-Grilla);
 }
 
 .div-cuerpo-grilla {
     display: flex;
     background-color: rgb(255, 255, 255);
-    border-radius: 15px;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
     padding: 15px 0px;
     font-size: 12px;
+    border-top: 1px solid var(--borde-inferior-Grilla)
 }
 
 .grilla-provincia {
@@ -181,14 +182,19 @@
 
 .grilla-datos-por-agrupacion {
     display: grid;
-    grid-template-columns: 100px 100px;
-    /*overflow-x: scroll;*/
-    /*height: 325px;*/
+    grid-template-columns: 100px 59px;
+    overflow-y: scroll;
+    height: 250px;
     padding: 15px;
     /*font-size: 10px;*/
     color: var(--textos);
+    gap: 10px;
 }
 
 .texto-agrupacion-oscuro {
     font-weight: bold;
+}
+
+.subcuadro-agrupacion {
+    padding-bottom: 5px;
 }
