@@ -198,3 +198,21 @@
 .subcuadro-agrupacion {
     padding-bottom: 5px;
 }
+
+#boton-limpiar {
+    margin-top: 8px;
+    margin-top: 7px;
+    padding: 9px;
+    border-radius: 5px;
+    background-color: gray;
+    border-color: gray;
+    color: #FFF;
+    font-size: 11px;
+    font-weight: bold;
+}
+
+#boton-limpiar:hover {
+    background-color: gray;
+    border-color: gray;
+    color: black;
+}

@@ -1,7 +1,8 @@
 import {comprobarLocalStorage} from "../common.js";
 import { provincias } from "./mapas.js";
 
-//localStorage.clear();
+let botonLimpiarRegistros = document.getElementById("boton-limpiar");
+botonLimpiarRegistros.onclick = limpiarRegistrosYRecargar;
 
 let banderaStorage = comprobarLocalStorage();
 
@@ -215,8 +216,9 @@ function montarDatosPorAgrupacion(arrayAgrupaciones) {
     })
 }
 
-function limpiarFilasTabla() {
-
+function limpiarRegistrosYRecargar() {
+    localStorage.clear();
+    location.reload();
 };
 
 /*
