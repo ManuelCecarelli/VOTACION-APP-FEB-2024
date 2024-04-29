@@ -126,7 +126,7 @@ function mostrarSeccionesOcultas() {
     secContenido.removeAttribute("hidden");
 };
 
-function montarProvinciaYTitulos(provinciaId, anio, tipoEleccion, cargo, distrito, consulta) {
+async function montarProvinciaYTitulos(provinciaId, anio, tipoEleccion, cargo, distrito, consulta) {
     //seleccionamos el elemento padre
     let divContainerGrilla = document.getElementById("div-container-grilla");
 
@@ -149,7 +149,12 @@ function montarProvinciaYTitulos(provinciaId, anio, tipoEleccion, cargo, distrit
     parrTextoNegro.innerHTML = `Elecciones ${anio} | ${tipoEleccion}`;
     parrTextoCeleste.innerHTML = `${anio} > ${tipoEleccion} > Provisorio > ${cargo} > ${distrito}`;
 
-    consulta.then(data => {
+    /*consulta.then(data => {
+        montarDatosGenerales(data.estadoRecuento.mesasTotalizadas, data.estadoRecuento.cantidadElectores, data.estadoRecuento.participacionPorcentaje);
+        montarDatosPorAgrupacion(data.valoresTotalizadosPositivos);
+    });*/
+
+    await consulta.then(data => {
         montarDatosGenerales(data.estadoRecuento.mesasTotalizadas, data.estadoRecuento.cantidadElectores, data.estadoRecuento.participacionPorcentaje);
         montarDatosPorAgrupacion(data.valoresTotalizadosPositivos);
     });
